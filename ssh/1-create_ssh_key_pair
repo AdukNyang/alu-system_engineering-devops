@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-# Generate an SSH key pair for ALU exercises
-
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/school -N ""
+# create new rsa key pair and make it protect with betty
+ssh-keygen -t rsa -b 4096 -f school -N "betty"
