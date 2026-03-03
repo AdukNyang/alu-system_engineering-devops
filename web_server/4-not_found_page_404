@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # Configures Nginx with a custom 404 page
-apt-get update
+apt-get update -y
 apt-get install -y nginx
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
+echo "Holberton School" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
-sed -i 's|location / {|location /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n\n\tlocation / {|' /etc/nginx/sites-available/default
-sed -i '/server_name _;/a \\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
+sed -i '/listen \[::\]:80 default_server;/a \\n\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
 service nginx restart
