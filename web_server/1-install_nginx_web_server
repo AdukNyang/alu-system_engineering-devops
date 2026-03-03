@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs and configures Nginx web server
 
-apt update -y
-apt install -y nginx
-echo "Holberton School" > /var/www/html/index.html
-service nginx restart
+sudo apt update -y
+sudo apt install nginx -y
+echo "Holberton School for the win!" | sudo tee /var/www/html/index.html
+sudo service nginx restart
