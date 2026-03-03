@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Configures Nginx with a 301 redirect
-apt-get update -y
-apt-get install -y nginx
+
+apt update -y
+apt install -y nginx
 echo "Holberton School" > /var/www/html/index.html
 config="server {
 	listen 80 default_server;
