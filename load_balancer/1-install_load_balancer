@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Installs and configures HAProxy as a load balancer
 
-apt-get update
-apt-get install -y haproxy
+sudo apt-get update
+sudo apt-get install -y haproxy
 
-cat >> /etc/haproxy/haproxy.cfg <<EOF
+sudo bash -c 'cat >> /etc/haproxy/haproxy.cfg <<EOF
 
 frontend http_front
     bind *:80
@@ -15,6 +15,7 @@ backend http_back
     server 7057-web-01 3.86.250.240:80 check
     server 7057-web-02 54.152.16.128:80 check
 EOF
+'
 
-systemctl enable haproxy
-systemctl restart haproxy
+sudo systemctl enable haproxy
+sudo systemctl restart haproxy
