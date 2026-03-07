@@ -16,4 +16,5 @@ backend http_back
     server 7057-web-02 54.152.16.128:80 check
 EOF
 
-service haproxy restart
+systemctl enable haproxy
+systemctl restart haproxy
