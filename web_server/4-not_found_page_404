@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # Configures Nginx with a custom 404 page
 
-sudo apt-get update -y
-sudo apt-get install -y nginx
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
-sudo sed -i "s|server_name _;|server_name _;\n\terror_page 404 /404.html;|" /etc/nginx/sites-available/default
-sudo service nginx restart
+sudo apt-get update -y > /dev/null 2>&1
+sudo apt-get install -y nginx > /dev/null 2>&1
+echo "Holberton School for the win!" | sudo tee /var/www/html/index.html > /dev/null
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
+
+config="server {\n\tlisten 80 default_server;\n\tlisten [::]:80 default_server;\n\troot /var/www/html;\n\tindex index.html index.htm;\n\tserver_name _;\n\terror_page 404 /404.html;\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n}"
+echo -e "$config" | sudo tee /etc/nginx/sites-available/default > /dev/null
+sudo service nginx restart > /dev/null 2>&1
