@@ -37,3 +37,4 @@ EOF'
 echo 'ENABLED=1' | sudo tee -a /etc/default/haproxy
 sudo systemctl enable haproxy
 sudo systemctl restart haproxy
+sudo cat /etc/haproxy/haproxy.cfg
