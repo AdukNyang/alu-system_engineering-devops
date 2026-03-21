@@ -1,6 +1,5 @@
-
 #!/usr/bin/env bash
-# Install and configure HAProxy with roundrobin load balancing
+# config the load balancer on the server
 
 sudo apt-get update -y
 sudo apt-get install -y haproxy
@@ -32,10 +31,10 @@ frontend http_front
 
 backend web_servers
     balance roundrobin
-    server web-01 3.86.250.240 check
-    server web-02 54.152.16.128 check
+    server web-01 44.204.86.70:80 check
+    server web-02 44.212.36.48:80 check
 EOF
 
 haproxy -c -f /etc/haproxy/haproxy.cfg || exit 1
 
-service haproxy restartsudo cat /etc/haproxy/haproxy.cfg
+service haproxy restart
