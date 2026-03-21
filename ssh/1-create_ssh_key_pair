@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-# create new rsa key pair and protect it with passphrase betty
 ssh-keygen -t rsa -b 4096 -f school -N "betty"
